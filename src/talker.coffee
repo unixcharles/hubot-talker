@@ -49,11 +49,11 @@ class Talker extends Adapter
         self.receive new Robot.TextMessage self.userForMessage(room, message), content
 
     bot.on "EnterMessage", (room, message) ->
-      unless self.name == message.user.name
+      unless self.robot.name == message.user.name
         self.receive new Robot.EnterMessage self.userForMessage(room, message)
 
     bot.on "LeaveMessage", (room, message) ->
-      unless self.name == message.user.name
+      unless self.robot.name == message.user.name
         self.receive new Robot.LeaveMessage self.userForMessage(room, message)
 
     for room in rooms
