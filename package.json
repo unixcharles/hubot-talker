@@ -1,6 +1,6 @@
 {
   "name":        "hubot-talker",
-  "version":     "1.0.3",
+  "version":     "1.0.4",
   "author":      "Charles Barbier <unixcharles@gmail.com>",
   "keywords":    "github hubot talker adapter",
   "description": "Talker adapter for hubot",
