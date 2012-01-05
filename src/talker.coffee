@@ -38,7 +38,7 @@ class Talker extends Adapter
         self.userForId(user.id, user)
 
     bot.on "TextMessage", (room, message)->
-      unless self.name == message.user.name
+      unless self.robot.name == message.user.name
         # Replace "@mention" with "mention: ", case-insensitively
         name_escape_regexp = new RegExp("[.*+?|()\\[\\]{}\\\\]", "g")
         escaped_name = self.robot.name.replace( name_escape_regexp, "\\$&")
