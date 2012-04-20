@@ -61,6 +61,8 @@ class Talker extends Adapter
 
     @bot = bot
 
+    self.emit "connected"
+
   userForMessage: (room, message)->
     author = @userForId(message.user.id, message.user)
     author.room = room
