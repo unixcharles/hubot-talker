@@ -114,14 +114,14 @@ class TalkerClient extends EventEmitter
 
     socket
 
-  write: (room, arguments) ->
+  write: (room, args) ->
     self = @
     @sockets[room]
 
     if @sockets[room].readyState != 'open'
       return @disconnect 'cannot send with readyState: ' + @sockets[room].readyState
 
-    message = JSON.stringify(arguments)
+    message = JSON.stringify(args)
     console.log "To room #{room}: #{message}"
 
     @sockets[room].write message, @encoding
