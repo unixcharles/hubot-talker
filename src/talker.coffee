@@ -72,7 +72,7 @@ exports.use = (robot) ->
 
 class TalkerClient extends EventEmitter
   constructor: ->
-    @domain        = 'talkerapp.com'
+    @host          = 'talkerapp.com'
     @encoding      = 'utf8'
     @port          = 8500
     @sockets       = {}
@@ -80,7 +80,7 @@ class TalkerClient extends EventEmitter
   createSocket: (room) ->
     self = @
 
-    socket = tls.connect @port, @domain, ->
+    socket = tls.connect @port, @host, ->
       console.log("Connected to room #{room}.")
       self.emit "Ready", room
 
