@@ -1,4 +1,4 @@
-{Adapter,Robot} = require 'hubot'
+{Adapter,Robot,TextMessage,EnterMessage,LeaveMessage} = require 'hubot'
 
 HTTPS        = require 'https'
 EventEmitter = require('events').EventEmitter
@@ -45,15 +45,15 @@ class Talker extends Adapter
         name_regexp = new RegExp "^@#{escaped_name}", 'i'
         content = message.content.replace(name_regexp, self.robot.name)
 
-        self.receive new Robot.TextMessage self.userForMessage(room, message), content
+        self.receive new TextMessage self.userForMessage(room, message), content
 
     bot.on "EnterMessage", (room, message) ->
       unless self.robot.name == message.user.name
-        self.receive new Robot.EnterMessage self.userForMessage(room, message)
+        self.receive new EnterMessage self.userForMessage(room, message)
 
     bot.on "LeaveMessage", (room, message) ->
       unless self.robot.name == message.user.name
-        self.receive new Robot.LeaveMessage self.userForMessage(room, message)
+        self.receive new LeaveMessage self.userForMessage(room, message)
 
     for room in rooms
       bot.sockets[room] = bot.createSocket(room)
