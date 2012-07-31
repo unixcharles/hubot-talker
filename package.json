@@ -1,6 +1,6 @@
 {
   "name":        "hubot-talker",
-  "version":     "1.0.6",
+  "version":     "1.0.7",
   "author":      "Charles Barbier <unixcharles@gmail.com>",
   "keywords":    "github hubot talker adapter",
   "description": "Talker adapter for hubot",
@@ -13,7 +13,7 @@
     "url" : "http://github.com/unixcharles/hubot-talker.git"
   },
   "devDependencies": {
-    "coffee-script": "1.1.3"
+    "coffee-script": "1.3.3"
   },
   "main": "./src/talker",
   "engine": "node > 0.6.0 < 0.7.0"
