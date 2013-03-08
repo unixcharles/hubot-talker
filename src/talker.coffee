@@ -6,13 +6,13 @@ net          = require('net')
 tls          = require('tls')
 
 class Talker extends Adapter
-  send: (user, strings...) ->
+  send: (envelope, strings...) ->
     strings.forEach (str) =>
-      @bot.write user.room, {"type": "message", "content": str}
+      @bot.write envelope.room, {"type": "message", "content": str}
 
-  reply: (user, strings...) ->
+  reply: (envelope, strings...) ->
     strings.forEach (str) =>
-      @send user, "@#{user.name} #{str}"
+      @send envelope, "@#{envelope.user.name} #{str}"
 
   run: ->
     self = @
