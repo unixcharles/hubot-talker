@@ -37,7 +37,7 @@ class Talker extends Adapter
         self.userForId(user.id, user)
 
     bot.on "TextMessage", (room, message)->
-      unless self.robot.name == message.user.name
+      unless self.robot.name.toUpperCase() == message.user.name.toUpperCase()
         # Replace "@mention" with "mention: ", case-insensitively
         name_escape_regexp = new RegExp("[.*+?|()\\[\\]{}\\\\]", "g")
         escaped_name = self.robot.name.replace( name_escape_regexp, "\\$&")
@@ -48,11 +48,11 @@ class Talker extends Adapter
         self.receive new TextMessage self.userForMessage(room, message), content
 
     bot.on "EnterMessage", (room, message) ->
-      unless self.robot.name == message.user.name
+      unless self.robot.name.toUpperCase() == message.user.name.toUpperCase()
         self.receive new EnterMessage self.userForMessage(room, message)
 
     bot.on "LeaveMessage", (room, message) ->
-      unless self.robot.name == message.user.name
+      unless self.robot.name.toUpperCase() == message.user.name.toUpperCase()
         self.receive new LeaveMessage self.userForMessage(room, message)
 
     for room in rooms
